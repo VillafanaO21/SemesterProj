@@ -24,13 +24,6 @@ module.exports = (sequelize, DataTypes) => {
     body: DataTypes.STRING,
     image_url: DataTypes.STRING,
     chef_id: DataTypes.INTEGER,
-    published_on: DataTypes.DATE,
-    friendlyPublishedDate: {
-      type: DataTypes.VIRTUAL,
-      get(){
-        return moment (this.published_on).format('MMMM Do, YYYY')
-      }
-    }
   }, {
     sequelize,
     modelName: 'Menu',

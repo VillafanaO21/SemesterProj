@@ -1,0 +1,6 @@
+mixin menuCard(menu)
+    a.card(href=`/menu/${menu.id}`)
+        img.card-image(src=menu.image_url)
+        div.card-body
+            div.card-title=menu.title
+            div.card-hook=menu.intro

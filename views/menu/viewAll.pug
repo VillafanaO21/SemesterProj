@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+    include ../mixins/menuCard
+    div.menu-header
+        div.menu-header-title Here's What's New
+        div
+            a.button.primary(href='/menu/add') Write New Menu
+
+    ul.menu-list
+        each menu in menus
+            li
+                +menuCard(menu)

@@ -4,11 +4,7 @@ block content
     div.container.blog
         div.content
             div.menu-header-row
-                h1.article-title=menu.title
-            p.published-on Published
-                strong.emphasize #{menu.published_on}
-                | by
+                h1.menu-title=menu.title
                 strong.emphasize #{menu.chef_id.first_name}
-
             img.blog-image(src=menu.image_url)
             p.article-body=menu.body
