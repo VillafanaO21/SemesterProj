@@ -23,7 +23,7 @@ module.exports.addMenu = async function(req, res){
 
 module.exports.displayMenu = async function(req, res){
     const menu = await Menu.findByPk(req.params.menuId, {
-        include: ['chef']
+        include: ['chef', 'comments']
     });
     res.render('menu/view', {menu});
 };

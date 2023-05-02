@@ -15,7 +15,11 @@ module.exports = (sequelize, DataTypes) => {
       Menu.belongsTo(models.User, {
         as: 'chef',
         foreignKey: 'chef_id'
-      })
+      });
+      Menu.hasMany(models.Comments, {
+        as:'comments',
+        foreignKey:'menu_id'
+      });
     }
   };
   Menu.init({

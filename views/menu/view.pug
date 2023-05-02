@@ -10,3 +10,15 @@ block content
                 strong.emphasize #{menu.chef_id.first_name}
             img.blog-image(src=menu.image_url)
             p.article-body=menu.body
+
+            div.comment-section
+                h3.comment-section-title Comments (#{menu.comments.length})
+                div.comment-form
+                    form(action=`/menu/${menu.id}/comment/create` method='post')
+                        div.input-container.wide
+                            label(for="chef_name").form-label Your Name
+                            input(type="text" name="chef_name" id="chef_id" required=true)
+                        div.input-container.wide
+                            textarea(placeholder="Your comment here..." required=true name="body" id="body" cols="80" rows="5")
+                        div
+                            button.button.primary(type="submit") Comment
