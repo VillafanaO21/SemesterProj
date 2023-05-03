@@ -1,0 +1,6 @@
+mixin order(order)
+    div.order
+        div.order-header
+            div.order-chef=order.chef_name
+            div.order-time=order.ordered
+        div.order-body=order.body

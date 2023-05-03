@@ -16,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
         as: 'chef',
         foreignKey: 'chef_id'
       });
-      Menu.hasMany(models.Comments, {
-        as:'comments',
+      Menu.hasMany(models.Order, {
+        as:'order',
         foreignKey:'menu_id'
       });
     }

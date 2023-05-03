@@ -1,4 +1,4 @@
-const {Menu} = require('../models');
+const {Menu, Order} = require('../models');
 module.exports.renderAddForm = function(req, res){
     const menu = {
         title: '',
@@ -23,7 +23,17 @@ module.exports.addMenu = async function(req, res){
 
 module.exports.displayMenu = async function(req, res){
     const menu = await Menu.findByPk(req.params.menuId, {
-        include: ['chef', 'comments']
+        include: [
+            'chef',
+            {
+                model: Order,
+                as: 'order',
+                required: false
+            }
+        ],
+        order: [
+            ['order', 'ordered_on', 'desc']
+        ]
     });
     res.render('menu/view', {menu});
 };
@@ -36,8 +46,14 @@ module.exports.displayAll = async function(req, res){
 }
 
 module.exports.renderAddForm = async function(req, res){
-    const menu = await Menu.findByPk(req.params.menuId);
-    res.render('menu/edit', {menu});
+    const menu = {
+        title: '',
+        intro: '',
+        image_url: '',
+        body: '',
+        chef_id: ''
+}
+    res.render('menu/add', {menu});
 }
 
 module.exports.updateMenu = async function(req, res){
