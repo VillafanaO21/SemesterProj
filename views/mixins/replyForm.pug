@@ -1,0 +1,9 @@
+mixin replyForm(order)
+    div.reply-form
+        form(action=`/order/${order.id}/reply/create` method='post')
+            div.input-form-row
+                div.input-container
+                    input(type="text" name="chef_name" id="chef_name" required=true placeholder="Your Name")
+                div.input-container.wide
+                    input(placeholder="Your order here...." required=true name="body" id="body")
+                button.button.primary(type="submit") Reply

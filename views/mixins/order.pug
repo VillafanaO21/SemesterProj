@@ -1,6 +1,22 @@
 mixin order(order)
+    include replyForm
     div.order
         div.order-header
             div.order-chef=order.chef_name
             div.order-time=order.ordered
         div.order-body=order.body
+        div
+            h4.reply-header Replies (#{order.replies.length})
+            div.reply-container
+                +replyForm(order)
+                if order.replies.length > 0
+                    ul.reply-list
+                        each reply in order.replies
+                            li
+                                div.order
+                                    div.order-header
+                                        div.order-chef=reply.chef_name
+                                        div.order-time=reply.friendlyReplyDate
+                                    div.order-body=reply.body
+                else
+                    p.empty-list No Replies

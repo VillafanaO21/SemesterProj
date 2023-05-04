@@ -12,13 +12,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Order.hasMany(models.Reply, {
+        as:'replies',
+        foreignKey:'parent_order_id'
+      })
     }
-  }
+  };
   Order.init({
     chef_name: DataTypes.STRING,
     body: DataTypes.STRING,
     ordered_on: DataTypes.DATE,
     menu_id: DataTypes.STRING,
+    parent_order_id: DataTypes.INTEGER,
     orderedAgo: {
       type: DataTypes.VIRTUAL,
       get(){

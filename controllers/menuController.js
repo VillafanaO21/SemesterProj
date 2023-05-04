@@ -1,4 +1,5 @@
 const {Menu, Order} = require('../models');
+
 module.exports.renderAddForm = function(req, res){
     const menu = {
         title: '',
