@@ -1,4 +1,4 @@
-const {Menu, Order} = require('../models');
+const {Menu, Order, Reply} = require('../models');
 
 module.exports.renderAddForm = function(req, res){
     const menu = {
@@ -29,7 +29,12 @@ module.exports.displayMenu = async function(req, res){
             {
                 model: Order,
                 as: 'order',
-                required: false
+                required: false,
+                include: [{
+                    model: Reply,
+                    as: 'replies',
+                    required: false
+                }]
             }
         ],
         order: [

@@ -37,6 +37,11 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Order',
     tableName:'blog_orders',
     timestamps: false,
+    defaultScope: {
+      where: {
+        parent_order_id: null
+      }
+    }
   });
   return Order;
 };
