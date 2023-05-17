@@ -19,4 +19,7 @@ router.post('/menu/:menuId/order/create', orderController.createOrder);
 router.post('/order/:orderId/reply/create', orderController.addReply);
 router.get('/register', userController.renderRegistrationForm);
 router.post('/register', userController.register);
+router.post('/register', userController.register);
+router.get('/login', userController.renderLogin);
+router.post('/login', userController.login);
 module.exports = router;
