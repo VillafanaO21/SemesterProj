@@ -13,6 +13,6 @@ mixin menuForm(menu, buttonText, saveUrl, cancelUrl, deleteUrl)
             label(for="body").form-label
             textarea(name="body" id="body" rows=20 cols=100 placeholder="This meal consist of the delicious...") #{menu.body}
         a.button(href=cancelUrl) Cancel
-        if(deleteUrl)
+        if(deleteUrl && user && menu.isOwnedBy(user))
             a.button(href=deleteUrl) Delete
         button.button.primary(type="submit") #{buttonText}

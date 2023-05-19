@@ -10,7 +10,6 @@ module.exports.renderAddForm = function(req, res){
     };
     res.render('menu/add', {menu});
 };
-
 module.exports.addMenu = async function(req, res){
     const menu = await Menu.create({
         title: req.body.title,
@@ -18,8 +17,9 @@ module.exports.addMenu = async function(req, res){
         image_url: req.body.image_url,
         body: req.body.body,
         chef_id: req.body.chef_id,
-    })
-    res.redirect('/') //todo change the redirect to view all once made
+        published_on: new Date()
+    });
+    res.redirect('/')
 };
 
 module.exports.displayMenu = async function(req, res){

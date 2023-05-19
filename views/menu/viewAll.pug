@@ -5,6 +5,7 @@ block content
     div.menu-header
         div.menu-header-title Here's What's New
         div
+            if user && user.is('chef')
             a.button.primary(href='/menu/add') Write New Menu
 
     ul.menu-list

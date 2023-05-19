@@ -22,7 +22,7 @@ async function verifyUser(username, password, done) {
     });
 }
 
-passport.user(
+passport.use(
     new Strategy(
         {
             usernameField: 'email',

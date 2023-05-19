@@ -21,6 +21,9 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey:'menu_id'
       });
     }
+    isOwnedBy(user){
+      return this.chef_id  === user.id
+    }
   };
   Menu.init({
     title: DataTypes.STRING,
