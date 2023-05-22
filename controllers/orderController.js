@@ -23,3 +23,16 @@ module.exports.addReply = async function(req, res){
     });
     res.redirect(`/menu/${menuId}`);
 }
+
+module.exports.deleteOrder = async function(req, res) {
+    const Order = await Comment.findByPk(req.params.orderId);
+    await Order.update({
+            is_deleted: true
+        }, {
+            where: {
+                id: req.params.OrderId
+            }
+        }
+    );
+    res.redirect(`/menu/${Order.menu_id}`);
+};

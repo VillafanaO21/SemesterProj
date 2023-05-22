@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     ordered_on: DataTypes.DATE,
     menu_id: DataTypes.STRING,
     parent_order_id: DataTypes.INTEGER,
+    is_deleted: DataTypes.BOOLEAN,
     orderedAgo: {
       type: DataTypes.VIRTUAL,
       get(){

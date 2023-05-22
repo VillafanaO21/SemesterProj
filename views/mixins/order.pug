@@ -4,7 +4,11 @@ mixin order(order)
         div.order-header
             div.order-chef=order.chef_name
             div.order-time=order.ordered
-        div.order-body=order.body
+        if order.is_deleted
+            p [Deleted]
+        else
+            div.order-body=order.body
+            a(href=`/order/${order.id}/delete`) Delete
         div
             h4.reply-header Replies (#{order.replies.length})
             div.reply-container

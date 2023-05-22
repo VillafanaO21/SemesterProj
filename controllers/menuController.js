@@ -51,6 +51,15 @@ module.exports.displayAll = async function(req, res){
     res.render('menu/viewAll', {menu});
 }
 
+module.exports.renderEditForm = async function(req, res){
+    const menu = await Menu.findByPk(req.params.menuId);
+    if (!menu.isOwnedBy(user)){
+        res.redirect('/');
+        return;
+    }
+    res.render('menus/edit', {menu});
+};
+
 module.exports.renderAddForm = async function(req, res){
     const menu = {
         title: '',
@@ -63,6 +72,11 @@ module.exports.renderAddForm = async function(req, res){
 }
 
 module.exports.updateMenu = async function(req, res){
+    const menu = await Menu.findByPk(req.parans.menuId);
+    if (!menu.isOwnedBy(user)){
+        res.redirect('/');
+        return;
+    }
     await Menu.update({
         title: req.body.title,
         intro: req.body.intro,
@@ -78,6 +92,11 @@ module.exports.updateMenu = async function(req, res){
 }
 
 module.exports.deleteMenu = async function(req, res){
+    const menu = await Menu.findByPk(req.params.menuId);
+    if (!user.is('admin') && !menu.isOwnedBy(user)){
+        res.redirect('/');
+        return;
+    }
     await Menu.destroy({
         where: {
             id: req.params.menuId
