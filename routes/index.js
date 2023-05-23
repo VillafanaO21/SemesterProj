@@ -26,5 +26,6 @@ router.get('/login', userController.renderLogin);
 router.post('/login', userController.login);
 router.post('/login', userController.login);
 router.get('/logout', userController.logout);
-router.get('/order/:orderId/delete', orderController.deleteOrder);
+router.get('/order/:orderId/delete', ensureUserAuthenticated, userHasRole('admin'), orderController.deleteOrder);
+router.get('/order/:orderId/reply/:replyId/delete', ensureUserAuthenticated, userHasRole('admin'), orderController.deleteReply);
 module.exports = router;
