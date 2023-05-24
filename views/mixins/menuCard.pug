@@ -3,4 +3,8 @@ mixin menuCard(menu)
         img.card-image(src=menu.image_url)
         div.card-body
             div.card-title=menu.title
+            p.published-on Published
+                strong.emphasize #{menu.friendlyPublishedDate}
+                | by
+                strong.emphasize #{menu.chef.first_name}
             div.card-hook=menu.intro
